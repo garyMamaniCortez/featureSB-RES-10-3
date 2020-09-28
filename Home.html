@@ -22,15 +22,22 @@
             let usuario = $('#usuario').val()
             $.ajax({
                 url: "https://jsonplaceholder.typicode.com/users/"+usuario
-            }).done(function(data) {
-                let tr = '<tr>'+
-                '<td>' + data.id + '</td>' +
-                '<td>' + data.username + '</td>' +
-                '<td>' + data.email +   '   </td>' +
-                '<td>' + data.website + '</td>' +
-                '</tr>'
-                $('#respuesta_body').append(tr)
-            });
+                }).done(function(data) {
+                    let tr = '<tr>'+
+                    '<td>' + data.id + '</td>' +
+                    '<td>' + data.username + '</td>' +
+                    '<td>' + data.email +   '   </td>' +
+                    '<td>' + data.website + '</td>' +
+                    '</tr>'
+                    $('#respuesta_body').append(tr)
+                });
+            return usuario;
         }
+        describe('Validar usuario',()=>{
+            it('Valida usuario',()=>{
+                const result=buscar();
+                expect(result).toBe(1);
+            });
+        })
     </script>
 </html>
